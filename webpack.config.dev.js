@@ -2,15 +2,11 @@ const path = require('path');
 const webpack = require('webpack');
 const autoprefixer = require('autoprefixer');
 const pxtorem = require('postcss-pxtorem');
-// const Dashboard = require('webpack-dashboard');
-// const DashboardPlugin = require('webpack-dashboard/plugin');
-// const dashboard = new Dashboard();
 
 module.exports = {
     context: __dirname + '/src',
     entry: {
-			bidacard: './bidacard/scripts/root.js',
-      flight: './flight/scripts/root.js',
+		  youwen: './entries/youwen.js'
     },
     module: {
         loaders: [
@@ -109,7 +105,12 @@ module.exports = {
       extensions: ['.web.js', '.jsx', '.js', '.json'],
     },
     devServer: {
-      // quiet: true, // 热更新不打印日志
+      quiet: false, // 热更新不打印日志
+      historyApiFallback: { // 支持H5的history属性
+        rewrites: [
+          { from: /^\/youwen/, to: 'src/pages/youwen.html' }, // 囿文
+        ],
+      },
       proxy: {
         "/localhost": {
           // target: "http://localhost:8950/",
@@ -124,12 +125,11 @@ module.exports = {
       new webpack.ProvidePlugin({
         React: "react",
         PropTypes: "prop-types",
-        Tool: ["../../tools/tool", "Tool"],
-        Header: ["../common/header", "default"],
+        // Tool: ["../../tools/tool", "Tool"],
+        // Header: ["../common/header", "default"],
         is: ["immutable", "is"],
         fromJS: ["immutable", "fromJS"],
-        _data: ["../data/document", "default"] // 所有项目中可变的文案
+        // _data: ["../data/document", "default"] // 所有项目中可变的文案
       })
-      // new DashboardPlugin(dashboard.setData),
     ]
 };
