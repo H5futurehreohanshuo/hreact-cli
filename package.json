@@ -49,8 +49,14 @@
   },
   "dependencies": {
     "antd-mobile": "^2.0.3",
+    "babel-eslint": "^8.0.2",
     "es6-promise": "^4.1.1",
-    "fetch": "^1.1.0",
+    "eslint": "^4.12.1",
+    "eslint-config-airbnb": "^16.1.0",
+    "eslint-plugin-babel": "^4.1.2",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "eslint-plugin-react": "^7.5.1",
     "fetch-ie8": "^1.5.0",
     "immutable": "^3.8.1",
     "isomorphic-fetch": "^2.2.1",
@@ -68,7 +74,8 @@
     "redux": "^3.7.2",
     "redux-immutablejs": "0.0.8",
     "redux-thunk": "^2.2.0",
-    "sha1": "^1.1.1"
+    "sha1": "^1.1.1",
+    "whatwg-fetch": "^2.0.3"
   },
   "theme": {
     "hd": "2px"
