@@ -1,9 +1,10 @@
+/* global React */
 import { Calendar } from 'antd-mobile';
 
-export default class Calendar extends React.Component {
+export default class CalendarComponent extends React.Component {
   render() {
     return (
-      <div>日历模块</div>
-    )
+      <div>111</div>
+    );
   }
 }

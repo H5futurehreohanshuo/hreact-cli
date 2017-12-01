@@ -76,8 +76,5 @@
     "redux-thunk": "^2.2.0",
     "sha1": "^1.1.1",
     "whatwg-fetch": "^2.0.3"
-  },
-  "theme": {
-    "hd": "2px"
   }
 }

@@ -16,43 +16,43 @@ const commonCssUse = [
 ];
 
 module.exports = {
-  context: __dirname + '/src',
+  context: path.join(__dirname, '/src'),
   entry: {
-	  youwen: './entries/youwen.js'
+    youwen: './entries/youwen.js',
   },
   module: {
     loaders: [
       {
         test: /\.js[x]?$/,
         exclude: /node_modules/,
-        loader: 'babel-loader'
+        loader: 'babel-loader',
       },
       {
         test: /\.css$/,
-        use: [...commonCssUse]
+        use: [...commonCssUse],
       },
       {
         test: /\.less$/,
         use: [
           ...commonCssUse,
           {
-            loader: 'less-loader'
-          }
-        ]
+            loader: 'less-loader',
+          },
+        ],
       },
       // svg-sprite for antd-mobile@1.0
       {
         test: /\.(svg)$/i,
         loader: 'svg-sprite-loader',
-        include: [require.resolve('antd-mobile').replace(/warn\.js$/, ''),  // 1. 属于 antd-mobile 内置 svg 文件
+        include: [require.resolve('antd-mobile').replace(/warn\.js$/, ''), // 1. 属于 antd-mobile 内置 svg 文件
         // path.resolve(__dirname, 'src/my-project-svg-foler'),  // 自己私人的 svg 存放目录
         ],
       },
       {
         test: /\.(jpg|png)$/,
-        loader: "url-loader"
+        loader: 'url-loader',
       },
-    ]
+    ],
   },
   output: {
     path: path.join(__dirname, '/src/'),
@@ -70,24 +70,26 @@ module.exports = {
       ],
     },
     proxy: {
-      "/localhost": {
+      '/localhost': {
         // target: "http://localhost:8950/",
-        target: "http://dev.panatrip.cn:18950/",
-        pathRewrite: {"^/localhost" : ""}
-      }
-    }
+        target: 'http://dev.panatrip.cn:18950/',
+        pathRewrite: {
+          '^/localhost': '',
+        },
+      },
+    },
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     // 每个文件检测如果没有引入下列模块则自动require,路径就是每个文件的路径
     new webpack.ProvidePlugin({
-      React: "react",
-      PropTypes: "prop-types",
-      // Tool: ["../../tools/tool", "Tool"],
-      // Header: ["../common/header", "default"],
-      is: ["immutable", "is"],
-      fromJS: ["immutable", "fromJS"],
-      // _data: ["../data/document", "default"] // 所有项目中可变的文案
-    })
-  ]
+      React: 'react',
+      PropTypes: 'prop-types',
+      // Tool: ['../../tools/tool', 'Tool'],
+      // Header: ['../common/header', 'default'],
+      is: ['immutable', 'is'],
+      fromJS: ['immutable', 'fromJS'],
+      // _data: ['../data/document', 'default'] // 所有项目中可变的文案
+    }),
+  ],
 };
